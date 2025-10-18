@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — B1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #030612;
+      --secondary: #0a1e6b;
+      --text: #151719;
+      --bg: #b7c8db;
+      --card: rgba(34, 17, 122, 0.06);
+      --border: rgba(9, 10, 20, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(205, 135, 135, 0.05);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 { color: var(--primary); font-weight: 700; }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: var(--secondary); }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(110deg, rgb(66, 77, 153) 30%, #2440a5 75%);
+      color: var(--text);
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+    .hero-text { max-width: 600px; }
+    .hero-text h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), #1a87a5);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: gradientFlow 4s linear infinite;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .hero img {
+      width: 320px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgb(3, 9, 116);
+    }
+
+    /* SECTIONS GLASS EFFECT */
+    section {
+      padding: 3rem 2rem;
+      background: transparent;
+    }
+    #education, #competences, #work , #contact {
+      background: var(--card);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(34, 4, 116, 0.955);
+      padding: 30px;
+      margin: 40px auto;
+      width: 90%;
+      max-width: 1000px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #education:hover, #competences:hover, #work:hover,#contact:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+    }
+    h3 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      letter-spacing: 1px;
+    }
+
+    /* TABLE */
+    .education-table table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .education-table th, .education-table td {
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border);
+    }
+    .education-table th {
+      background: var(--secondary);
+      color: white;
+      text-align: center;
+    }
+    .education-table tbody tr:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    /* SKILLS */
+    .skill { margin-bottom: 30px; }
+    .skill p {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+    .progress-bar {
+      background-color: rgba(255, 255, 255, 0.1);
+      height: 25px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .progress {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      height: 100%;
+      width: 0%;
+      text-align: right;
+      color: rgb(27, 23, 146);
+      font-weight: bold;
+      transition: width 3s ease-in-out;
+    }
+
+    /* WORK */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-content { padding: 1rem; }
+    .card-content h4 { color: var(--primary); margin-bottom: 0.5rem; }
+    .card-content p { color: #ccc; font-size: 0.95rem; margin-bottom: 1rem; }
+    .card-content a {
+      text-decoration: none;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: transform 0.3s ease;
+    }
+    .card-content a:hover { transform: scale(1.05); }
+
+
+
+
+    /* CONTACT */
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    input, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 1rem;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.12);
+    }
+    button {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #183465;
+      color: #dddada;
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+    .socials {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .socials a {
+      color: var(--text);
+      font-size: 1.4rem;
+      transition: color 0.3s;
+    }
+    .socials a:hover { color: var(--secondary); }
+
+    @media(max-width:768px){
+      .hero{flex-direction:column;text-align:center;}
+      .hero img{margin-top:1.5rem;width:250px;}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Welcome</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#education">Education</a>
+    <a href="#competences">competences</a>
+    <a href="#work">Work</a>
+    <a href="#community life">Community life</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h2>Amir Soussi</h2>
+    <p>My name is Amir Soussi, and I’m a student at the National Engineering School of Sousse , majoring in Applied Computer Science.
+       I’m passionate about cyber security, problem solving, and Intelligence and Automation , and I'm currently in a phase of learning many new skills and trying different things until finding the path I enjoy most.</p>
+    <h3>Focused on building my soft and hard-skills.</h3>
+  </div>
+  <img src="img1.jpeg" alt="Amir Image" />
+</section>
+
+<section id="education">
+  <h3>Education</h3>
+  <div class="education-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Diploma</th>
+          <th>Institution</th>
+          <th>Speciality</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>technical Baccalaureate</td><td>lycée 2 mars 1934 Ksar Hellal</td><td>technique</td><td>2022-2023</td></tr>
+        <tr><td>Prepatory Class</td><td>IPEIM</td><td>Techno</td><td>2024-2025</td></tr>
+        <tr><td>Engineering Cycle</td><td>Eniso</td><td>Applied Computer Science</td><td>2027-2028</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="competences">
+  <h3>My Skills</h3>
+  <div class="skill">
+    <p><i class="fab fa-html5" style="color:#e34c26; margin-right:8px;"></i>HTML</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="90">90%</div>
+    </div>
+  </div>
+  <div class="skill">
+    <p><i class="fab fa-css3-alt" style="color:#264de4; margin-right:8px;"></i>CSS</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="70">70%</div>
+    </div>
+  </div>
+  <div class="skill">
+    <p><i class="fab fa-js-square" style="color:#f0db4f; margin-right:8px;"></i>JavaScript</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="50">50%</div>
+    </div>
+  </div>
+  <div class="skill">
+    <p><i class="fab fa-python" style="color:#3776ab; margin-right:8px;"></i>Python</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="80">80%</div>
+    </div>
+  </div>
+  <div class="skill">
+    <p><i class="fas fa-video" style="color:#ff6b6b; margin-right:8px;"></i>Adobe Premiere Pro</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="40">40%</div>
+    </div>
+  </div>
+  <div class="skill">
+    <p><i class="fas fa-cube" style="color:#4a90e2; margin-right:8px;"></i>SolidWorks</p>
+    <div class="progress-bar">
+      <div class="progress" data-progress="70">70%</div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <h3>My Work</h3>
+  <div class="work-grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Project 1" />
+      <div class="card-content">
+        <h4>Project 1</h4>
+        <p>My own Portfolio</p>
+        <a href="#">View Project</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=400&q=80" alt="Project 2" />
+      <div class="card-content">
+        <h4>Project 2</h4>
+        <p>Off-road robot</p>
+        <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.didactico.tn%2Fproduit%2Fchassis-robot-intelligent-4wd%2F%3Fsrsltid%3DAfmBOooQJFV9CL6LaidHEyRhheN8eN7w1k5Xm3V5ik5jgebuZouRQks9&psig=AOvVaw1CGe5tYrtXn8wo96fke0rh&ust=1760872055344000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCICN-NzNrZADFQAAAAAdAAAAABAE" target="_blank">View Project</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=400&q=80" alt="Project 3" />
+      <div class="card-content">
+        <h4>Project 3</h4>
+        <p>Web page</p>
+        <a href="https://bu-1-ugxd.vercel.app/" target="_blank">View Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section id="contact">
+  <h3>Contact Me</h3>
+  <form>
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<footer>
+  <p>©️ 2025 Amir Soussi - All Rights Reserved</p>
+  <div class="socials">
+    <a href="https://www.facebook.com/share/16mk66A3WP/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/amir_soussi/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+</footer>
+
+<script>
+// TYPEWRITER
+function typeWriter(el, speed=40){
+  // Get the original text and ensure it's properly stored
+  const originalText = el.dataset.fulltext || el.textContent;
+  
+  // Clear the element
+  el.textContent = '';
+  
+  let i = 0;
+  return new Promise(resolve => {
+    const interval = setInterval(() => {
+      if (i < originalText.length) {
+        el.textContent += originalText.charAt(i);
+        i++;
+      } else {
+        clearInterval(interval);
+        resolve();
+      }
+    }, speed);
+  });
+}
+
+// OBSERVER GENÉRIQUE
+function observeSection(section, animateFunc){
+  let hasAnimated = false;
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting && !hasAnimated){
+        animateFunc(entry.target);
+        hasAnimated = true;
+      }
+      // Remove the reset functionality to prevent animations from resetting
+    });
+  }, {threshold:0.3});
+  observer.observe(section);
+}
+
+// === HERO ===
+const heroSection = document.querySelector('#home');
+const heroImg = heroSection.querySelector('img');
+const heroLines = heroSection.querySelectorAll('.hero-text h2, .hero-text p');
+
+// Store original text immediately when page loads
+heroLines.forEach(l => { 
+  // Store the original text content before any modifications
+  l.dataset.fulltext = l.textContent;
+});
+
+async function animateHero(){
+  // Prevent multiple animations
+  if(heroSection.dataset.animated === 'true') return;
+  heroSection.dataset.animated = 'true';
+  
+  heroImg.style.opacity=0;
+  heroImg.style.transform='translateY(30px)';
+  heroImg.offsetHeight;
+  heroImg.style.transition='all 1s ease';
+  heroImg.style.opacity=1;
+  heroImg.style.transform='translateY(0)';
+
+  // Animate each line with typewriter effect
+  for (let i = 0; i < heroLines.length; i++) {
+    const line = heroLines[i];
+    
+    // Clear the line first
+    line.textContent = '';
+    
+    // Wait for the previous line to finish + some delay
+    if (i > 0) {
+      await new Promise(resolve => setTimeout(resolve, 200));
+    }
+    
+    // Start typewriter animation
+    await typeWriter(line, 30);
+  }
+}
+// Reset function removed - animations won't reset on scroll
+observeSection(heroSection, animateHero);
+
+// === SKILLS ===
+const skillsSection = document.querySelector('#competences');
+const skillBars = document.querySelectorAll('.progress');
+function animateSkills(){
+  skillBars.forEach((bar,idx)=>{
+    const val = bar.dataset.progress;
+    bar.style.transition = `width 1.5s ease ${idx*0.2}s`;
+    bar.style.width = val+'%';
+  });
+}
+// Reset function removed - animations won't reset on scroll
+observeSection(skillsSection, animateSkills);
+
+// === EDUCATION ===
+const educationRows = document.querySelectorAll('#education table tbody tr');
+educationRows.forEach(tr=>{
+  tr.style.opacity=0;
+  tr.style.transform='translateY(20px)';
+});
+function animateEducation(){
+  educationRows.forEach((tr,idx)=>{
+    setTimeout(()=>{
+      tr.style.transition='all 0.5s ease';
+      tr.style.opacity=1;
+      tr.style.transform='translateY(0)';
+    }, idx*200);
+  });
+}
+// Reset function removed - animations won't reset on scroll
+observeSection(document.querySelector('#education'), animateEducation);
+
+// === WORK CARDS ===
+const workCards = document.querySelectorAll('#work .card');
+workCards.forEach(card=>{
+  card.style.opacity=0;
+  card.style.transform='translateY(30px)';
+  observeSection(card, el=>{
+    el.style.transition='all 0.8s ease';
+    el.style.opacity=1;
+    el.style.transform='translateY(0)';
+  });
+});
+
+// === CONTACT ===
+const contactLines = document.querySelectorAll('#contact h3, #contact input, #contact textarea, #contact button');
+contactLines.forEach(l=>{
+  // Store original text content immediately
+  l.dataset.fulltext = l.textContent || l.value || '';
+  l.style.opacity=0;
+  l.style.transform='translateY(20px)';
+});
+function animateContact(){
+  contactLines.forEach((line, idx)=>{
+    setTimeout(async ()=>{
+      line.style.transition='all 0.5s ease';
+      line.style.opacity=1;
+      line.style.transform='translateY(0)';
+      
+      // Use typewriter for headings and buttons
+      if(line.tagName==='H3' || line.tagName==='BUTTON') {
+        await typeWriter(line,30);
+      }
+    }, idx*150);
+  });
+}
+// Reset function removed - animations won't reset on scroll
+observeSection(document.querySelector('#contact'), animateContact);
+
+// === ANIMATION CONTROL ===
+let animationsEnabled = false;
+
+// Check if coming from intro or direct access
+function checkAnimationState() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const fromIntro = urlParams.get('from') === 'intro';
+  const skipIntro = urlParams.get('skip') === 'true';
+  
+  if (fromIntro || skipIntro || !document.referrer.includes('intro.html')) {
+    // Enable animations after a short delay
+    setTimeout(() => {
+      animationsEnabled = true;
+      startAnimations();
+    }, 500);
+  } else {
+    // If coming from intro, wait a bit longer
+    setTimeout(() => {
+      animationsEnabled = true;
+      startAnimations();
+    }, 1000);
+  }
+}
+
+function startAnimations() {
+  if (!animationsEnabled) return;
+  
+  animateHero();
+  // Don't auto-start other animations - let them trigger on scroll
+}
+
+// === INITIAL LOAD ===
+window.addEventListener('load', checkAnimationState);
+</script>
+
+</body>
+</html>

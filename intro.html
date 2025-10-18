@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to My Portfolio</title>
+  <link rel="stylesheet" href="junior.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <div class="stage intro_s">
+  <div class="scene center">
+    <h1 class="intro">Welcome to my portfolio</h1>
+    <span class="header code">Here</span>
+    <span class="subheader pro">you will discover the work that</span>
+    <span class="subheader don">defines my creativity</span>
+    <span class="header build">Each project tells a story of</span>
+    <span class="subheader calc">skill, passion, and ideas</span>
+  </div>
+</div>
+<script>
+    // === Animation Letter by Letter ===
+    function split(to_split) {
+      let words = $(to_split).text().split('');
+      for (let i in words) {
+        words[i] = '<span>' + words[i] + '</span>';
+      }
+      let text = words.join('');
+      $(to_split).html(text);
+    }
+
+    function show_text(to_show, method, timing) {
+      split($(to_show));
+      let count = 0;
+      $(to_show + ' span').each(function () {
+        if (method === 'popup') {
+          $(this).delay((timing * count) + count * 1)
+            .animate({ opacity: '1', top: '-10px' }, 220, 'swing')
+            .animate({ opacity: '1', top: '0px' }, 140);
+        } else {
+          $(this).delay(timing * count)
+            .animate({ opacity: '1', top: '0' }, 100);
+        }
+        count++;
+      });
+    }
+
+    // === Show Animation Sequence ===
+    $(document).ready(function () {
+      show_text('.intro', 'popup', 10);
+
+      setTimeout(function () {
+        $('.sub').addClass('drop_swing');
+      }, 100);
+
+      setTimeout(function () {
+        $('.sub, .intro').hide();
+      }, 3400);
+
+      setTimeout(function () {
+        $('.pro, .code').hide();
+      }, 6400);
+
+      setTimeout(function () {
+        $('.years, .don').hide();
+      }, 9400);
+
+      setTimeout(function () {
+        $('.calc, .build').hide();
+      }, 12200);
+
+      setTimeout(function () {
+        $('.call, .not').css('opacity', '1');
+        show_text('.call', 'popup', 10);
+        setTimeout(function () {
+          show_text('.not', 'popup', 10);
+          // Auto-redirect to main portfolio after intro completes
+          setTimeout(function() {
+            window.location.href = 'junior.html?from=intro';
+          }, 2000);
+        }, 233);
+      }, 12300);
+    });
+    
+  </script>
+  <a href="junior.html?skip=true" id="nextBtn">Skip</a>
+
+
+    
+  
+</body>
+</html>
